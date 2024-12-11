@@ -18,40 +18,56 @@ import FaqList from '../components/Faq/FaqList'
  
 const Home = () => {
   return <>
-{/* ============== hero section ============== */}
-<section className="hero_section pt-[60px]">
-  <div className="container min-h-[600px] flex items-center">
-    <div className="flex flex-col lg:flex-row items-center justify-between w-full">
-      {/* ============== hero content ============== */}
-      <div className="text-left lg:w-1/2">
-        <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[50px] md:leading-[60px]">
-          Get Expert Services <br /> Right at Your Doorstep
-        </h1>
-        <p className="text__para mt-4 text-[16px]">
-          Reliable, fast, and professional home services for all your needs. Book now to experience the difference.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/appointment"
-            className="btn bg-primary text-white px-6 py-3 rounded-md shadow-md hover:bg-secondary"
-          >
-            Request an Appointment
-          </Link>
+ {/* ============== hero section ============== */}
+ <section className="hero_section pt-[60px] fade-in">
+      <div className="container min-h-[600px] flex items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between w-full">
+          <div className="text-left lg:w-1/2">
+            <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[50px] md:leading-[60px]">
+              Get Expert Services <br /> Right at Your Doorstep
+            </h1>
+            <p className="text__para mt-4 text-[16px]">
+              Reliable, fast, and professional home services for all your needs. Book now to experience the difference.
+            </p>
+            <div className="mt-6">
+              <Link to="/appointment" className="btn bg-primary text-white px-6 py-3 rounded-md shadow-md hover:bg-secondary">
+                Request an Appointment
+              </Link>
+            </div>
+          </div>
+          <div className="lg:w-1/2 flex justify-end items-center">
+            <img src={heroImg01} alt="Service Hero" className="rounded-lg shadow-lg w-[400px] h-[450px] object-cover" />
+          </div>
         </div>
       </div>
+    </section>
 
-      {/* ============== hero image ============== */}
-      <div className="lg:w-1/2 flex justify-end items-center">
-        <img
-          src={heroImg01}
-          alt="Service Hero"
-          className="rounded-lg shadow-lg w-[400px] h-[450px] object-cover"
-        />
+    {/* How It Works Section */}
+    <section className="fade-in">
+      <div className='container'>
+        <div className='lg:w-[470px] mx-auto'>
+          <h2 className='heading text-center'>HOW IT WORKS</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]">
+          {[icon01, icon02, icon03].map((icon, idx) => (
+            <div key={idx} className='py-[30px] px-5 fade-out'>
+              <div className='flex items-center justify-center'>
+                <img src={icon} alt="" />
+              </div>
+              <h2 className='text-[26px] leading-9 text-headingColor font-[700] text-center'>
+                {['Find a Service', 'Find a Location', 'Book Appointment'][idx]}
+              </h2>
+              <p className='text-[16px] leading-7 text-textColor font-[400] mt-4 text-center'>
+                World class service for everyone. Our Home Service System offers unmatched, expert, and skilled professionals.
+              </p>
+              <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-blue-500 hover:border-none'>
+                <BsArrowRight className='group-hover:text-white w-6 h-5' />
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
       <br />
       <br />
@@ -60,7 +76,7 @@ const Home = () => {
       <br />
       <br />
 
-      <div className='container'>
+      <div className='container' >
         <div className='lg:w-[470px] mx-auto'>
           <h2 className='heading text-center'>
             HOW IT WORKS

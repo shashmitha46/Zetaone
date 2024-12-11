@@ -1,71 +1,86 @@
-//import React from 'react'
-import { formateDate } from '../../utils/formateDate'
+import React, { useState } from 'react';
 
 const DoctorAbout = () => {
+  const [searchResults, setSearchResults] = useState([]);
+
+  const professions = [
+    {
+      name: 'Shiv Singh',
+      profession: 'Mechanic',
+      education: [
+        {
+          duration: '08-29-2010 - 08-31-2015',
+          institute: 'Aashta Mechanic Shop, Gorakhpur',
+        },
+        {
+          duration: '10-01-2015 - 10-04-2018',
+          institute: 'Aashta Mechanic Shop, Gorakhpur',
+        },
+      ],
+      experience: [
+        {
+          duration: '10-01-2015 - 10-04-2018',
+          role: 'Mechanic',
+          company: 'Aashta Mechanic Shop, Gorakhpur',
+        },
+      ],
+    },
+  ];
+
+  const handleSearch = () => {
+    const results = professions.filter(
+      (person) => person.profession.toLowerCase() === 'mechanic'
+    );
+    setSearchResults(results);
+  };
+
   return (
     <div>
-        <div>
-            <h3 className='text-[20px] leading-[30px] text-black font-semibold fles items-center gap-2'>About of 
-                  <span className='text-[#246BCE] font-bold text-[24px] leading-9 ml-3'>
-                     Shiv Singh
-                </span>
-            </h3>
-            <p className="text__para">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, consectetur alias. 
-                Consequuntur voluptatum recusandae sit,
-                hic animi maiores alias! Aliquid, sed rem quo explicabo autem quis eligendi magnam vero adipisci?
-            </p>
-        </div>
+      <div>
+        <h3 className='text-[20px] leading-[30px] text-black font-semibold flex items-center gap-2'>
+          About of
+          <span className='text-[#246BCE] font-bold text-[24px] leading-9 ml-3'>
+            Shiv Singh
+          </span>
+        </h3>
+        <p className="text__para">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, consectetur alias.
+          Consequuntur voluptatum recusandae sit, hic animi maiores alias! Aliquid, sed rem
+          quo explicabo autem quis eligendi magnam vero adipisci?
+        </p>
+      </div>
 
+      <button 
+        className='btn mt-0 rounded-[0px] rounded-r-md' 
+        onClick={handleSearch}
+      >
+        Search
+      </button>
+
+      {searchResults.length > 0 && (
         <div className='mt-12'>
-            <h3 className='text-[20px] leading-[30px] text-black font-semibold'>Education</h3>
-              <ul className='pt-4 md:p-5'>
-                  <li className='flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]'>
-                      <div>
-                          <span className='text-[#246BCE] text-[15px] leading-6 font-semibold'>
-                              {formateDate("08-29-2010")} - {formateDate("08-31-2015")}
-                          </span>
-                          <p className='text-[16px] leading-6 font-medium text-textColor'>Mechanic</p>
-                      </div>
-                      <p className='text-[14px] leading-5 font-medium text-textColor'>Aashta Mechanic Shop, Gorakhpur</p>
-                  </li>
-                  <li className='flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]'>
-                      <div>
-                          <span className='text-[#246BCE] text-[15px] leading-6 font-semibold'>
-                              {formateDate("10-01-2015")} - {formateDate("10-04-2018")}
-                          </span>
-                          <p className='text-[16px] leading-6 font-medium text-textColor'>Mechanic</p>
-                      </div>
-                      <p className='text-[14px] leading-5 font-medium text-textColor'>Aashta Mechanic Shop, Gorakhpur</p>
-                  </li>
-              </ul>
+          <h3 className='text-[20px] leading-[30px] text-black font-semibold'>Search Results</h3>
+          <ul className='pt-4 md:p-5'>
+            {searchResults.map((person, index) => (
+              <li key={index} className='mb-[30px]'>
+                <p className='text-[16px] leading-6 font-medium text-textColor'>
+                  {person.name} - {person.profession}
+                </p>
+                <h4 className='font-semibold'>Education</h4>
+                {person.education.map((edu, idx) => (
+                  <p key={idx}>{edu.duration} - {edu.institute}</p>
+                ))}
+                <h4 className='font-semibold'>Experience</h4>
+                {person.experience.map((exp, idx) => (
+                  <p key={idx}>{exp.duration} - {exp.company}</p>
+                ))}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <div className="mt-12">
-              <h3 className='text-[20px] leading-[30px] text-black font-semibold'>Experience</h3>
-              <ul className='grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5'>
-                <li className='p-4 rounded bg-[#fff9ae]'>
-                    <span className='text-[#bcb340] text-[15px leading-6 font-semibold]'>
-                        {formateDate("10-01-2015")} - {formateDate("10-04-2018")}
-                    </span>
-                    <p className='text-[16px] leading-6 font-medium text-textColor'>Mechanic</p>
-                    <p className='text-[16px] leading-6 font-medium text-textColor'>Aashta Mechanic Shop, Gorakhpur</p>
-                </li>
-                <li className='p-4 rounded bg-[#fff9ae]'>
-                    <span className='text-[#bcb340] text-[15px leading-6 font-semibold]'>
-                        {formateDate("10-01-2015")} - {formateDate("10-04-2018")}
-                    </span>
-                    <p className='text-[16px] leading-6 font-medium text-textColor'>Mechanic</p>
-                    <p className='text-[16px] leading-6 font-medium text-textColor'>Aashta Mechanic Shop, Gorakhpur</p>
-                </li>
-              </ul>
-        </div>
-
-
-        
-
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default DoctorAbout
+export default DoctorAbout;

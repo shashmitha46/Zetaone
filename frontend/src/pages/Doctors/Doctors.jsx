@@ -22,19 +22,9 @@ const Doctors = () => {
         </div>
       </div>
     </section>
+    <br />
+    <br /><br />
 
-    <section>
-      <div className="container">
-        <div className="xl:w-[470px] mx-auto">
-          <h2 className='heading text-center m-5'> What our customer say</h2>
-          <p className='text__para text-center mb-4'>
-          World class service for everyone. Our Home Service System Offers unmatched, expert and skilled people. 
-          From your home to the repair.
-          </p>
-        </div>
-        <Testimonial />
-      </div>
-    </section>
   </>
 }
 
