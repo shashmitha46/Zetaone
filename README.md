@@ -1,1 +1,1 @@
-# Zetaone
+Zetaone
