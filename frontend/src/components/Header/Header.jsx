@@ -52,7 +52,7 @@ const Header = () => {
 
   return (
     <header
-      className={`header flex items-center fixed top-0 left-0 w-full z-50 bg-white shadow-lg transition-transform duration-300 ${
+      className={`header flex items-center fixed top-0 left-0 w-full z-50 bg-white-blue shadow-lg transition-transform duration-300 ${
         isScrollingUp ? "translate-y-0" : "-translate-y-full"
       }`}
       ref={headerRef}
@@ -61,8 +61,8 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/*======================= Logo and Name ========================*/}
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="w-10 h-10" />
-            <h1 className="text-[20px] font-bold text-primaryColor">ZETAONE</h1>
+            <img src={logo} alt="Logo" className="w-11 h-11" />
+            <h1 className="text-[30px] font-bold text-primaryColor">ZETAONE</h1>
           </div>
 
           {/*======================= Menu ========================*/}
@@ -74,8 +74,8 @@ const Header = () => {
                     to={link.path}
                     className={({ isActive }) =>
                       isActive
-                        ? "text-primaryColor text-[16px] leading-7 font-[600]"
-                        : "text-textColor text-[16px] leading-7 font-[500] hover:text-blue-500"
+                        ? "text-primaryColor text-[20px] leading-7 font-[600]"
+                        : "text-textColor text-[20px] leading-7 font-[500] hover:text-blue-500"
                     }
                   >
                     {link.display}
